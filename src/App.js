@@ -1,13 +1,9 @@
-import Kobe from "./components/kobe";
-import ShowString from "./components/showStrings";
-import NamesList from "./components/namesList";
-import Hidden from "./components/hidden";
+import Input from "./components/controled/input";
 
 function App() {
   return (
     <div className="App">
-      <NamesList />
-      <Hidden />
+      <Input />
     </div>
   );
 }
