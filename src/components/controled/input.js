@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./input.module.scss";
 
 export default class Input extends Component {
   constructor(props) {
@@ -14,9 +15,17 @@ export default class Input extends Component {
     };
   }
 
+  borderStyle = styles.border;
+
   onSubmitHandler = (e) => {
     e.preventDefault();
-    this.setState({ isShown: true });
+    if (this.state.value1 === "") {
+      this.borderStyle = styles.borderRed;
+      this.setState({ isShown: false });
+    } else {
+      console.log("Submit success");
+      this.setState({ isShown: true });
+    }
   };
 
   onChangeHandler1 = (e) => {
@@ -46,7 +55,7 @@ export default class Input extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmitHandler}>
+        <form onSubmit={this.onSubmitHandler} className={this.borderStyle}>
           <input
             type="text"
             value={this.state.value1}
