@@ -1,31 +1,16 @@
 import React, { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
-import TodoList from "./components/todo/todoList/todoList";
-import Input from "./components/todo/input/input";
+import Kobe from "./components/kobe";
+import Main from "./components/todo";
 
 function App() {
-  const [inputVal, setInputVal] = useState("");
-  const [todos, setTodos] = useState([]);
-
-  let onInputChangeHandler = (val) => {
-    setInputVal(val);
-    // console.log(inputVal);
-  };
-
-  let onButtonClick = () => {
-    setTodos(todos.concat(inputVal));
-    console.log(todos);
-  };
-
-  let onDeleteButtonClick = (id) => {
-    setTodos(todos.filter((it, index) => index !== id));
-  };
-
   return (
     <div className="App">
-      <Input onchange={onInputChangeHandler} value={inputVal} />{" "}
-      <button onClick={onButtonClick}>Add</button>
-      <TodoList todos={todos} ondelete={onDeleteButtonClick} />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/kobe" element={<Kobe />} />
+      </Routes>
     </div>
   );
 }
