@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import TodoList from "./todoList/todoList";
 import Input from "./input/input";
+import ErrorBoundary from "../ErrorBoundary";
 
 function Main() {
   const [inputVal, setInputVal] = useState("");
@@ -23,19 +24,21 @@ function Main() {
   };
 
   return (
-    <div className="App">
-      <ul>
-        <li>
-          <Link to="/">Main</Link>
-        </li>
-        <li>
-          <Link to="/kobe">Kobe</Link>
-        </li>
-      </ul>
-      <Input onchange={onInputChangeHandler} value={inputVal} />{" "}
-      <button onClick={onButtonClick}>Add</button>
-      <TodoList todos={todos} ondelete={onDeleteButtonClick} />
-    </div>
+    <ErrorBoundary>
+      <div className="App">
+        <ul>
+          <li>
+            <Link to="/">Main</Link>
+          </li>
+          <li>
+            <Link to="/kobe">Kobe</Link>
+          </li>
+        </ul>
+        <Input onchange={onInputChangeHandler} value={inputVal} />{" "}
+        <button onClick={onButtonClick}>Add</button>
+        <TodoList todos={todos} ondelete={onDeleteButtonClick} />
+      </div>
+    </ErrorBoundary>
   );
 }
 
